@@ -6,7 +6,6 @@ module "frontend" {
     sg_name = var.frontend_sg_name
     sg_description = var.frontend_sg_description
     vpc_id = local.vpc_id
-<<<<<<< HEAD
 }
 
 module "bastion" {
@@ -28,6 +27,3 @@ resource "aws_security_group_rule" "bastion_laptop" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = module.bastion.sg_id
 }
-=======
-}
->>>>>>> eec570683a8dc21a1cc0c100b6cf2d719b916c9b
