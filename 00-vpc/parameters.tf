@@ -2,6 +2,7 @@ resource "aws_ssm_parameter" "vpc_id" {
   name  = "/${var.project}/${var.environment}/vpc_id"
   type  = "String"
   value = module.vpc.vpc_id
+<<<<<<< HEAD
 }
 
 resource "aws_ssm_parameter" "public_subnet_ids" {
@@ -20,4 +21,6 @@ resource "aws_ssm_parameter" "database_subnet_ids" {
   name  = "/${var.project}/${var.environment}/database_subnet_ids"
   type  = "StringList"
   value = join(",", module.vpc.database_subnet_ids)    #convering a string-List into string using join function
+=======
+>>>>>>> eec570683a8dc21a1cc0c100b6cf2d719b916c9b
 }
