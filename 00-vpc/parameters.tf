@@ -20,15 +20,7 @@ resource "aws_ssm_parameter" "database_subnet_ids" {
   name  = "/${var.project}/${var.environment}/database_subnet_ids"
   type  = "StringList"
   value = join(",", module.vpc.database_subnet_ids)    #convering a string-List into string using join function
-<<<<<<< HEAD
 
 }
 
-=======
-<<<<<<< HEAD
-}
-=======
-}
 
->>>>>>> 5175811 (inra)
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164

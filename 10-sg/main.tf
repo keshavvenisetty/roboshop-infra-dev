@@ -6,38 +6,18 @@ module "frontend" {
     sg_name = var.frontend_sg_name
     sg_description = var.frontend_sg_description
     vpc_id = local.vpc_id
-<<<<<<< HEAD
     sg_tags = var.sg_tags
 
-=======
-<<<<<<< HEAD
-=======
-    sg_tags = var.sg_tags
->>>>>>> 5175811 (inra)
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
 }
 
 module "bastion" {
     #source = "../../../terraform-aws-securitygroup"
-<<<<<<< HEAD
     source = "git::https://github.com/keshavvenisetty/terraform-aws-securitygroup.git?ref=main"
-=======
-<<<<<<< HEAD
-    source = "git::https://github.com/keshavvenisetty/terraform-aws-securitygroup.git?ref=main"
-=======
-   source = "git::https://github.com/keshavvenisetty/terraform-aws-securitygroup.git?ref=main"
->>>>>>> 5175811 (inra)
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
     project = var.project
     environment = var.environment
     sg_name = var.bastion_sg_name
     sg_description = var.bastion_sg_description
     vpc_id = local.vpc_id
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
     sg_tags = var.sg_tags
 }
 
@@ -61,10 +41,7 @@ module "vpn" {
     sg_description = "for VPN connections"
     vpc_id = local.vpc_id
     sg_tags = var.sg_tags
-<<<<<<< HEAD
-=======
->>>>>>> 5175811 (inra)
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
+
 }
 
 # bastion accepting connections from my laptop
@@ -76,12 +53,7 @@ resource "aws_security_group_rule" "bastion_laptop" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = module.bastion.sg_id
 }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
 
 # backend_alb accepting connections from bastion host on port no. 80
 resource "aws_security_group_rule" "backend_alb_bastion" {
@@ -129,8 +101,4 @@ resource "aws_security_group_rule" "vpn_ports_943" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = module.vpn.sg_id
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 5175811 (inra)
->>>>>>> 6fec1ab4e9c5d341b83bb8ef31abd459591c8164
