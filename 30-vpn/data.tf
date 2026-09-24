@@ -24,6 +24,6 @@ data "aws_ssm_parameter" "vpn_sg_id" {
  with_decryption = false
 }
 
-# data "aws_ssm_parameter" "public_subnet_ids" {
-#     name = "/${var.project}/${var.environment}/public_subnet_ids"
-# }
+data "aws_ssm_parameter" "public_subnet_ids" {
+    name = "/${var.project}/${var.environment}/public_subnet_ids"
+}
