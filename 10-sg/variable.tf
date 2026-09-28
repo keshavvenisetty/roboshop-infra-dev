@@ -74,9 +74,20 @@ variable "rabbitmq_sg_name" {
 
 variable "rabbitmq_sg_description" {
     default = "created sg for rabbitmq instance"
+}
 
+variable "catalogue_sg_name" {
+    default = "catalogue"
+}
+
+variable "catalogue_sg_description" {
+    default = "created sg for catalogue instance"
 }
 
 variable "mongodb_ports_vpn" {
     default = [22, 27017]
+}
+
+variable "catalogue_ports_vpn" {
+    default = [22, 8080]
 }
