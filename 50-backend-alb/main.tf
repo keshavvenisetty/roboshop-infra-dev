@@ -4,7 +4,7 @@ module "backend_alb" {
   internal = true
   name    = "${var.project}-${var.environment}-backend-alb"
   vpc_id  = local.vpc_id
-  subnets = local.private_subnet_ids
+  subnets = local.private_subnet_id
   create_security_group = false
   security_groups = [local.backend_alb_sg_id]
   enable_deletion_protection = false
@@ -34,4 +34,14 @@ resource "aws_lb_listener" "backend_alb" {
   }
 }
 
+resource "aws_route53_record" "backend_alb" {
+  zone_id = var.zone_id
+  name    = "*.backend-dev.${var.zone_name}"
+  type    = "A"
 
+  alias {
+    name                   = module.backend_alb.dns_name
+    zone_id                = module.backend_alb.zone_id   #this is the zone id of the ALB
+    evaluate_target_health = true
+  }
+}

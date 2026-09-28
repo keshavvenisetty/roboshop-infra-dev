@@ -7,7 +7,7 @@ resource "aws_instance" "vpn" {
   ami           = local.ami_id
   instance_type = var.instance_type
   vpc_security_group_ids = [local.vpn_sg_id]
-  subnet_id = local.public_subnet_ids
+  subnet_id = local.public_subnet_id
   key_name = aws_key_pair.openvpn.key_name
   user_data = file("openvpn.sh")
   
