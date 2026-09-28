@@ -31,6 +31,15 @@ resource "aws_instance" "catalogue" {
   )
 }
 
+resource "aws_route53_record" "catalogue" {
+  zone_id = var.zone_id
+  name    = "catalogue.${var.zone_name}"
+  type    = "A"
+  ttl     = 1
+  records = [aws_instance.catalogue.private_ip]
+  allow_overwrite = true
+}
+
 resource "terraform_data" "catalogue"{
   triggers_replace = [
     aws_instance.catalogue.id    #this will trigger the resources after creation of catalogue instance
