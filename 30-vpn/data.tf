@@ -1,10 +1,10 @@
 data "aws_ami" "openvpn" {
+  owners           = ["267156886116"]   
   most_recent      = true
-  owners           = ["679593333241"]
 
   filter {
     name   = "name"
-    values = ["OpenVPN Access Server Community Image-8fbe3379-*"]
+    values = ["OpenVPN Access Server Community Image*"]
   }
 
   filter {
@@ -18,14 +18,22 @@ data "aws_ami" "openvpn" {
   }
 }
 
+data "aws_ssm_parameter" "vpn_sg_id" {
+ name = "/${var.project}/${var.environment}/vpn_sg_id"
+ with_decryption = false
+}
+
+data "aws_ssm_parameter" "public_subnet_ids" {
+    name = "/${var.project}/${var.environment}/public_subnet_ids"
+}
 
 # data "aws_ami" "openvpn" {
-#   owners           = ["444663524611"]    
 #   most_recent      = true
+#   owners           = ["679593333241"]
 
 #   filter {
 #     name   = "name"
-#     values = ["OpenVPN Access Server Community Image"]
+#     values = ["OpenVPN Access Server Community Image-8fbe3379-*"]
 #   }
 
 #   filter {
@@ -40,11 +48,22 @@ data "aws_ami" "openvpn" {
 # }
 
 
-data "aws_ssm_parameter" "vpn_sg_id" {
- name = "/${var.project}/${var.environment}/vpn_sg_id"
- with_decryption = false
-}
+# data "aws_ami" "openvpn" {
+#   owners           = ["267156886116"]    
+#   most_recent      = true
 
-data "aws_ssm_parameter" "public_subnet_ids" {
-    name = "/${var.project}/${var.environment}/public_subnet_ids"
-}
+#   filter {
+#     name   = "name"
+#     values = ["OpenVPN Access Server Community Image"] 
+#   }
+
+#   filter {
+#     name   = "root-device-type"
+#     values = ["ebs"]
+#   }
+
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
+# }
